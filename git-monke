@@ -112,11 +112,11 @@ main() {
 	fi
 
 	# Use the shFlags project to parse the command line arguments
-	. "$GITFLOW_DIR/gitflow-shFlags"
-	FLAGS_PARENT="git flow"
+	. "$GITFLOW_DIR/gitmonke-shFlags"
+	FLAGS_PARENT="git monke"
 
 	# Load common functionality
-	. "$GITFLOW_DIR/gitflow-common"
+	. "$GITFLOW_DIR/gitmonke-common"
 
 	# allow user to request git action logging
 	DEFINE_boolean 'showcommands' false 'Show actions taken (git commands)'
@@ -159,14 +159,14 @@ main() {
 		fi
 	fi
 
-		if [ ! -e "$GITFLOW_DIR/git-flow-$SUBCOMMAND" ]; then
+		if [ ! -e "$GITFLOW_DIR/git-monke-$SUBCOMMAND" ]; then
 		usage
 		exit 1
 	fi
 
 	# Run command
-	. "$GITFLOW_DIR/git-flow-$SUBCOMMAND"
-	FLAGS_PARENT="git flow $SUBCOMMAND"
+	. "$GITFLOW_DIR/git-monke-$SUBCOMMAND"
+	FLAGS_PARENT="git monke $SUBCOMMAND"
 
 	if [ -z "${SUBACTION}" ]; then
 		# If the first argument is a flag, it starts with '-', we interpret this
@@ -201,7 +201,7 @@ main() {
 		initialize
 	fi
 	if [ $SUBACTION != 'default' ]; then
-		FLAGS_PARENT="git flow $SUBCOMMAND $SUBACTION"
+		FLAGS_PARENT="git monke $SUBCOMMAND $SUBACTION"
 	fi
 
 	cmd_$SUBACTION "$@" "${_short_branch_name}"
