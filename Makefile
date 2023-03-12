@@ -54,6 +54,10 @@ all:
 	@echo "       make uninstall"
 
 install:
+ifeq ($(shell type gh 2> /dev/null),)
+	$(error "Command gh (GitHub-cli) not found, see https://cli.github.com/")
+endif
+
 	install -d -m 0755 $(prefix)/bin
 	install -d -m 0755 $(docdir)/hooks
 	install -m 0755 $(EXEC_FILES) $(prefix)/bin
