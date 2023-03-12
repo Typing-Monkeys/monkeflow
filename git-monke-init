@@ -39,7 +39,7 @@
 
 usage() {
 	OPTIONS_SPEC="\
-git flow init
+git monke init
 
 Initialize a new git repo with support for the branching model.
 
@@ -58,9 +58,9 @@ parse_args() {
 # Default entry when no SUBACTION is given
 cmd_default() {
 	OPTIONS_SPEC="\
-git flow init [-h] [-d] [-f]
+git monke init [-h] [-d] [-f]
 
-Setup a git repository for git flow usage. Can also be used to start a git repository.
+Setup a git repository for git monke usage. Can also be used to start a git repository.
 --
 h,help!             Show this help
 showcommands!       Show git commands while executing them
@@ -130,10 +130,10 @@ file=    use given config file
 		git_repo_is_headless || require_clean_working_tree
 	fi
 
-	# Running git flow init on an already initialized repo is fine
+	# Running git monke init on an already initialized repo is fine
 	if gitflow_is_initialized && ! flag force; then
 		warn "Already initialized for gitflow."
-		warn "To force reinitialization, use: git flow init -f"
+		warn "To force reinitialization, use: git monke init -f"
 		exit 0
 	fi
 
@@ -151,7 +151,7 @@ file=    use given config file
 		#    We will create a new master/develop branch for the user
 		# 2. Some branches do already exist
 		#    We will disallow creation of new master/develop branches and
-		#    rather allow to use existing branches for git-flow.
+		#    rather allow to use existing branches for git-monke.
 		branch_count=$(git_local_branches | wc -l)
 		if [ "$branch_count" -eq 0 ]; then
 			echo "No branches exist yet. Base branches must be created now."
@@ -284,7 +284,7 @@ file=    use given config file
 		created_gitflow_branch=1
 	fi
 
-	# Assert the git-flow repo has been correctly initialized
+	# Assert the git-monke repo has been correctly initialized
 	gitflow_is_initialized
 
 	# Switch to develop branch if its newly created

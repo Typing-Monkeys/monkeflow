@@ -423,7 +423,7 @@ _finish_base() {
 initialize() {
 	require_git_repo
 	require_gitflow_initialized
-	git config --get gitflow.prefix.release >/dev/null 2>&1 || die "Release prefix not set. Please run 'git flow init'."
+	git config --get gitflow.prefix.release >/dev/null 2>&1 || die "Release prefix not set. Please run 'git monke init'."
 	gitflow_load_settings
 	VERSION_PREFIX=$(git config --get gitflow.prefix.versiontag)
 	PREFIX=$(git config --get gitflow.prefix.release)
@@ -431,12 +431,12 @@ initialize() {
 
 usage() {
 		OPTIONS_SPEC="\
-git flow release [list]
-git flow release start
-git flow release finish
-git flow release publish
-git flow release track
-git flow release delete
+git monke release [list]
+git monke release start
+git monke release finish
+git monke release publish
+git monke release track
+git monke release delete
 
 Manage your release branches.
 
@@ -452,7 +452,7 @@ cmd_default() {
 
 cmd_list() {
 		OPTIONS_SPEC="\
-git flow release [list] [-h] [-v]
+git monke release [list] [-h] [-v]
 
 List existing release branches
 --
@@ -478,7 +478,7 @@ v,verbose!        verbose (more) output
 		warn ""
 		warn "You can start a new release branch:"
 		warn ""
-		warn "    git flow release start <name> [<base>]"
+		warn "    git monke release start <name> [<base>]"
 		warn ""
 		exit 0
 	fi
@@ -548,7 +548,7 @@ require_no_existing_release_branches() {
 
 cmd_start() {
 	OPTIONS_SPEC="\
-git flow release start [options] <version> [<base>]
+git monke release start [options] <version> [<base>]
 
 Start a new release branch
 --
@@ -614,13 +614,13 @@ v,verbose!           Verbose (more) output
 	echo "- Start committing last-minute fixes in preparing your release"
 	echo "- When done, run:"
 	echo
-	echo "     git flow release finish '$VERSION'"
+	echo "     git monke release finish '$VERSION'"
 	echo
 }
 
 cmd_finish() {
 	OPTIONS_SPEC="\
-git flow release finish [-h] [-F] [-s] [-u] [-m | -f] [-p] [-k] [-n] [-b] [-S] [-e] <version>
+git monke release finish [-h] [-F] [-s] [-u] [-m | -f] [-p] [-k] [-n] [-b] [-S] [-e] <version>
 
 
 Finish a release branch
@@ -765,7 +765,7 @@ nodevelopmerge!  Don't back-merge develop branch
 
 cmd_branch() {
 	OPTIONS_SPEC="\
-git flow release branch [-h] [-F] [-s] [-u] [-m] [-f] [-p] [-n] [-S] <version> [<name>]
+git monke release branch [-h] [-F] [-s] [-u] [-m] [-f] [-p] [-n] [-S] <version> [<name>]
 
 
 Release a branch [<name>], if a name is not given it defaults to the develop branch, and use the given version <version>
@@ -828,7 +828,7 @@ S,[no]squash 		Squash release during merge
 
 	# Sanity checks
 	if gitflow_is_prefixed_branch "$BRANCH"; then
-		die "Branch '$BRANCH' seems to be a git-flow branch. It's not allowed to release this directly."
+		die "Branch '$BRANCH' seems to be a git-monke branch. It's not allowed to release this directly."
 	fi
 
 	if [ "$BRANCH" = "$MASTER_BRANCH" ]; then
@@ -923,7 +923,7 @@ S,[no]squash 		Squash release during merge
 
 cmd_publish() {
 	OPTIONS_SPEC="\
-git flow release publish [-h] <name>
+git monke release publish [-h] <name>
 
 Publish the release branch <name> on $ORIGIN
 --
@@ -963,7 +963,7 @@ showcommands!    Show git commands while executing them
 
 cmd_track() {
 	OPTIONS_SPEC="\
-git flow release track [-h] <name>
+git monke release track [-h] <name>
 
 Start tracking release <name> that is shared on $ORIGIN
 --
@@ -998,7 +998,7 @@ showcommands!    Show git commands while executing them
 
 cmd_rebase() {
 	OPTIONS_SPEC="\
-git flow release rebase [-h] [-i] [-p] [<name|nameprefix>]
+git monke release rebase [-h] [-i] [-p] [<name|nameprefix>]
 
 Rebase <name> on <base_branch>
 --
@@ -1048,7 +1048,7 @@ p,[no]preserve-merges  Preserve merges
 
 cmd_delete() {
 	OPTIONS_SPEC="\
-git flow release delete [-h] [-f] [-r] <name>
+git monke release delete [-h] [-f] [-r] <name>
 
 Delete the given release branch
 --

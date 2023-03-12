@@ -44,11 +44,11 @@ initialize() {
 
 usage() {
 	OPTIONS_SPEC="\
-git flow config [list]
-git flow config set
-git flow config base
+git monke config [list]
+git monke config set
+git monke config base
 
-Manage the git-flow configuration.
+Manage the git-monke configuration.
 
 For more specific help type the command followed by --help
 --
@@ -84,9 +84,9 @@ cmd_default() {
 
 cmd_list() {
 	OPTIONS_SPEC="\
-git flow config [list]
+git monke config [list]
 
-Show the git-flow configurations
+Show the git-monke configurations
 --
 h,help!           Show this help
 
@@ -134,9 +134,9 @@ file=     Use given config file
 
 cmd_set() {
 	OPTIONS_SPEC="\
-git flow config set <option> <value>
+git monke config set <option> <value>
 
-Set the git-flow configuration option to the given value
+Set the git-monke configuration option to the given value
 --
 h,help!           Show this help
 local!    Use repository config file
@@ -273,7 +273,7 @@ file=     Use given config file
 
 cmd_base () {
 		OPTIONS_SPEC="\
-git flow config base [<options>] <branch> [<base>]
+git monke config base [<options>] <branch> [<base>]
 
 Set the given <base> for the given <branch>
 --

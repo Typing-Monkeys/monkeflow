@@ -40,23 +40,23 @@
 initialize() {
 	require_git_repo
 	require_gitflow_initialized
-	git config --get gitflow.prefix.feature >/dev/null 2>&1 || die "Feature prefix not set. Please run 'git flow init'."
+	git config --get gitflow.prefix.feature >/dev/null 2>&1 || die "Feature prefix not set. Please run 'git monke init'."
 	gitflow_load_settings
 	PREFIX=$(git config --get gitflow.prefix.feature)
 }
 
 usage() {
 	OPTIONS_SPEC="\
-git flow feature [list]
-git flow feature start
-git flow feature finish
-git flow feature publish
-git flow feature track
-git flow feature diff
-git flow feature rebase
-git flow feature checkout
-git flow feature pull
-git flow feature delete
+git monke feature [list]
+git monke feature start
+git monke feature finish
+git monke feature publish
+git monke feature track
+git monke feature diff
+git monke feature rebase
+git monke feature checkout
+git monke feature pull
+git monke feature delete
 
 Manage your feature branches.
 
@@ -72,7 +72,7 @@ cmd_default() {
 
 cmd_list() {
 	OPTIONS_SPEC="\
-git flow feature [list] [-h] [-v]
+git monke feature [list] [-h] [-v]
 
 Lists all the existing feature branches in the local repository.
 --
@@ -94,7 +94,7 @@ v,verbose   Verbose (more) output
 		warn ""
 		warn "You can start a new feature branch:"
 		warn ""
-		warn "    git flow feature start <name> [<base>]"
+		warn "    git monke feature start <name> [<base>]"
 		warn ""
 		exit 0
 	fi
@@ -176,7 +176,7 @@ parse_remote_name() {
 
 cmd_start() {
 	OPTIONS_SPEC="\
-git flow feature start [-h] [-F] <name> [<base>]
+git monke feature start [-h] [-F] <name> [<base>]
 
 Start new feature <name>, optionally basing it on <base> instead of <develop>
 --
@@ -230,13 +230,13 @@ F,[no]fetch      Fetch from origin before performing local operation
 	echo ""
 	echo "Now, start committing on your feature. When done, use:"
 	echo ""
-	echo "     git flow feature finish $NAME"
+	echo "     git monke feature finish $NAME"
 	echo
 }
 
 cmd_finish() {
 	OPTIONS_SPEC="\
-git flow feature finish [-h] [-F] [-r] [-p] [-k] [-D] [-S] [--no-ff] <name|nameprefix>
+git monke feature finish [-h] [-F] [-r] [-p] [-k] [-D] [-S] [--no-ff] <name|nameprefix>
 
 Finish feature <name>
 --
@@ -379,7 +379,7 @@ helper_finish_cleanup() {
 
 cmd_publish() {
 	OPTIONS_SPEC="\
-git flow feature publish [-h] [<name>]
+git monke feature publish [-h] [<name>]
 
 Publish feature branch <name> on $ORIGIN.
 When <name> is omitted the current branch is used, but only if it's a feature branch.
@@ -421,7 +421,7 @@ showcommands!    Show git commands while executing them
 
 cmd_track() {
 	OPTIONS_SPEC="\
-git flow feature track [-h] <name>
+git monke feature track [-h] <name>
 
 Start tracking feature <name> that is shared on $ORIGIN
 --
@@ -456,7 +456,7 @@ showcommands!    Show git commands while executing them
 
 cmd_diff() {
 	OPTIONS_SPEC="\
-git flow feature diff [-h] [<name|nameprefix>]
+git monke feature diff [-h] [<name|nameprefix>]
 
 Show all changes in <name> that are not in the base
 --
@@ -481,7 +481,7 @@ showcommands!    Show git commands while executing them
 
 cmd_checkout() {
 	OPTIONS_SPEC="\
-git flow feature checkout [-h] [<name|nameprefix>]
+git monke feature checkout [-h] [<name|nameprefix>]
 
 Switch to feature branch <name>
 --
@@ -505,7 +505,7 @@ cmd_co() {
 
 cmd_rebase() {
 	OPTIONS_SPEC="\
-git flow feature rebase [-h] [-i] [-p] [<name|nameprefix>]
+git monke feature rebase [-h] [-i] [-p] [<name|nameprefix>]
 
 Rebase <name> on <base_branch>
 --
@@ -561,7 +561,7 @@ avoid_accidental_cross_branch_action() {
 	current_branch=$(git_current_branch)
 	if [ "$BRANCH" != "$current_branch" ]; then
 		warn "Trying to pull from '$BRANCH' while currently on branch '$current_branch'."
-		warn "To avoid unintended merges, git-flow aborted."
+		warn "To avoid unintended merges, git-monke aborted."
 		return 1
 	fi
 	return 0
@@ -569,7 +569,7 @@ avoid_accidental_cross_branch_action() {
 
 cmd_pull() {
 	OPTIONS_SPEC="\
-git flow feature pull [-h] <remote> [<name>]
+git monke feature pull [-h] <remote> [<name>]
 
 Pull feature <name> from <remote>
 --
@@ -581,7 +581,7 @@ showcommands!    Show git commands while executing them
 	# Define flags
 	DEFINE_boolean 'rebase' false "pull with rebase" r
 
-	warn "The command 'git flow feature pull' will be deprecated per version 2.0.0. Use 'git flow feature track' instead."
+	warn "The command 'git monke feature pull' will be deprecated per version 2.0.0. Use 'git monke feature track' instead."
 
 	# Parse arguments
 	parse_remote_name "$@"
@@ -638,7 +638,7 @@ showcommands!    Show git commands while executing them
 
 cmd_delete() {
 	OPTIONS_SPEC="\
-git flow feature delete [-h] [-f] [-r] <name>
+git monke feature delete [-h] [-f] [-r] <name>
 
 Delete a given feature branch
 --
@@ -710,7 +710,7 @@ r,[no]remote     Delete remote branch
 
 cmd_rename() {
 	OPTIONS_SPEC="\
-git flow feature rename <new_name> [<new_name>]
+git monke feature rename <new_name> [<new_name>]
 
 Rename a given feature branch
 --
