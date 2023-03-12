@@ -753,11 +753,14 @@ nodevelopmerge!  Don't back-merge develop branch
 			git_fetch_branch "$ORIGIN" "$BRANCH"
 	fi
 
-	if [ "$BASE_BRANCH" = "$DEVELOP_BRANCH" ]; then
-		_finish_from_develop
-	else
-		_finish_base
-	fi
+	# push branch to Github
+	git_do push -u "$ORIGIN" "$BRANCH:$BRANCH"
+	
+	# create PR to develop branch
+	gh pr create --base $BASE_BRANCH
+	
+	# create PR to master branch
+  	gh pr create --base $MASTER_BRANCH
 }
 
 cmd_branch() {

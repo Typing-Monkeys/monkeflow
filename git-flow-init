@@ -421,6 +421,9 @@ file=    use given config file
 		git_do config $gitflow_config_option gitflow.path.hooks "$hooks_dir"
 	fi
 
+	# set default Github repo	
+	gh repo set-default
+	
 	# TODO: what to do with origin?
 }
 
