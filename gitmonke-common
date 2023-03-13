@@ -655,8 +655,8 @@ require_git_repo() {
 }
 
 require_gitflow_initialized() {
-	gitflow_is_initialized || die "Not a gitflow-enabled repo yet. Please run 'git flow init' first."
-	$(git config --get gitflow.prefix.versiontag >/dev/null 2>&1) || die "Version tag not set. Please run 'git flow init'."
+	gitflow_is_initialized || die "Not a gitflow-enabled repo yet. Please run 'git monke init' first."
+	$(git config --get gitflow.prefix.versiontag >/dev/null 2>&1) || die "Version tag not set. Please run 'git monke init'."
 }
 
 require_clean_working_tree() {

@@ -46,7 +46,7 @@ initialize() {
 
 usage() {
 	OPTIONS_SPEC="\
-git flow log
+git monke log
 
 shows current branch log compared to develop
 'git help log' for arguments
@@ -67,7 +67,7 @@ cmd_default() {
 
 cmd_list() {
 	OPTIONS_SPEC="\
-git flow feature log [<options>]
+git monke feature log [<options>]
 
 Show log on <feature> branch since the fork of <develop> branch
 Options come from git log

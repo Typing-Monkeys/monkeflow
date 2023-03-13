@@ -29,22 +29,20 @@
 prefix=/usr/local
 
 datarootdir=$(prefix)/share
-docdir=$(datarootdir)/doc/gitflow
+docdir=$(datarootdir)/doc/gitmonke
 # files that need mode 755
-EXEC_FILES=git-flow
+EXEC_FILES=git-monke
 
 # files that need mode 644
-SCRIPT_FILES =git-flow-init
-SCRIPT_FILES+=git-flow-feature
-SCRIPT_FILES+=git-flow-bugfix
-SCRIPT_FILES+=git-flow-hotfix
-SCRIPT_FILES+=git-flow-release
-SCRIPT_FILES+=git-flow-support
-SCRIPT_FILES+=git-flow-version
-SCRIPT_FILES+=git-flow-log
-SCRIPT_FILES+=git-flow-config
-SCRIPT_FILES+=gitflow-common
-SCRIPT_FILES+=gitflow-shFlags
+SCRIPT_FILES =git-monke-init
+SCRIPT_FILES+=git-monke-feature
+SCRIPT_FILES+=git-monke-hotfix
+SCRIPT_FILES+=git-monke-release
+SCRIPT_FILES+=git-monke-version
+SCRIPT_FILES+=git-monke-log
+SCRIPT_FILES+=git-monke-config
+SCRIPT_FILES+=gitmonke-common
+SCRIPT_FILES+=gitmonke-shFlags
 
 # Hook files
 HOOK_FILES=$(wildcard hooks/*)
@@ -54,6 +52,10 @@ all:
 	@echo "       make uninstall"
 
 install:
+ifeq ($(shell type gh 2> /dev/null),)
+	$(error "Command gh (GitHub-cli) not found, see https://cli.github.com/")
+endif
+
 	install -d -m 0755 $(prefix)/bin
 	install -d -m 0755 $(docdir)/hooks
 	install -m 0755 $(EXEC_FILES) $(prefix)/bin

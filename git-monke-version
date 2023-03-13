@@ -46,7 +46,7 @@ initialize() {
 
 usage() {
 	OPTIONS_SPEC="\
-git flow version
+git monke version
 
 Shows version information.
 

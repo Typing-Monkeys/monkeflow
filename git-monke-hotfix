@@ -40,7 +40,7 @@
 initialize() {
 	require_git_repo
 	require_gitflow_initialized
-	git config --get gitflow.prefix.hotfix >/dev/null 2>&1 || die "Hotfix prefix not set. Please run 'git flow init'."
+	git config --get gitflow.prefix.hotfix >/dev/null 2>&1 || die "Hotfix prefix not set. Please run 'git monke init'."
 	gitflow_load_settings
 	VERSION_PREFIX=$(git config --get gitflow.prefix.versiontag)
 	PREFIX=$(git config --get gitflow.prefix.hotfix)
@@ -48,11 +48,11 @@ initialize() {
 
 usage() {
 	OPTIONS_SPEC="\
-git flow hotfix [list]
-git flow hotfix start
-git flow hotfix finish
-git flow hotfix publish
-git flow hotfix delete
+git monke hotfix [list]
+git monke hotfix start
+git monke hotfix finish
+git monke hotfix publish
+git monke hotfix delete
 
 Manage your hotfix branches.
 
@@ -68,7 +68,7 @@ cmd_default() {
 
 cmd_list() {
 	OPTIONS_SPEC="\
-git flow hotfix [list] [-h] [-v]
+git monke hotfix [list] [-h] [-v]
 
 Lists all local hotfix branches
 --
@@ -90,7 +90,7 @@ v,verbose!        Verbose (more) output
 		warn ""
 		warn "You can start a new hotfix branch:"
 		warn ""
-		warn "    git flow hotfix start <version> [<base>]"
+		warn "    git monke hotfix start <version> [<base>]"
 		warn ""
 		exit 0
 	fi
@@ -165,7 +165,7 @@ require_no_existing_hotfix_branches() {
 
 cmd_start() {
 	OPTIONS_SPEC="\
-git flow hotfix start [-h] [-F] <version> [<base>]
+git monke hotfix start [-h] [-F] <version> [<base>]
 
 Start new hotfix branch named <version>, optionally base it on <base> instead of the <master> branch
 --
@@ -235,13 +235,13 @@ F,[no]fetch       Fetch from origin before performing local operation
 	echo "- Bump the version number now!"
 	echo "- When done, run:"
 	echo
-	echo "     git flow hotfix finish '$VERSION'"
+	echo "     git monke hotfix finish '$VERSION'"
 	echo
 }
 
 cmd_publish() {
 	OPTIONS_SPEC="\
-git flow hotfix publish [-h] <version>
+git monke hotfix publish [-h] <version>
 
 Start sharing hotfix <name> on $ORIGIN
 --
@@ -281,7 +281,7 @@ showcommands!     Show git commands while executing them
 
 cmd_rebase() {
 	OPTIONS_SPEC="\
-git flow hotfix rebase [-h] [-i] [-p] [<name|nameprefix>]
+git monke hotfix rebase [-h] [-i] [-p] [<name|nameprefix>]
 
 Rebase <name> on <base_branch>
 --
@@ -331,7 +331,7 @@ p,[no]preserve-merges  Preserve merges
 
 cmd_track() {
 	OPTIONS_SPEC="\
-git flow hotfix track [-h] <version>
+git monke hotfix track [-h] <version>
 
 Create a tracking hotfix branch from $ORIGIN
 --
@@ -361,7 +361,7 @@ showcommands!     Show git commands while executing them
 
 cmd_finish() {
 	OPTIONS_SPEC="\
-git flow hotfix finish [-h] [-F] [-s] [-u] [-m | -f ] [-p] [-k] [-n] [-b] [-S] <version>
+git monke hotfix finish [-h] [-F] [-s] [-u] [-m | -f ] [-p] [-k] [-n] [-b] [-S] <version>
 
 Finish hotfix branch <version>
 --
@@ -667,7 +667,7 @@ T,tagname!            Use given tag name
 
 cmd_delete() {
 	OPTIONS_SPEC="\
-git flow hotfix delete [-h] [-f] [-r] <name>
+git monke hotfix delete [-h] [-f] [-r] <name>
 
 Delete the given hotfix branch
 --
@@ -732,7 +732,7 @@ r,[no]remote          Delete remote branch
 
 cmd_rename() {
 	OPTIONS_SPEC="\
-git flow hotfix rename <new_name> [<new_name>]
+git monke hotfix rename <new_name> [<new_name>]
 
 Rename a given hotfix branch
 --

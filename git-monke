@@ -89,20 +89,18 @@ if [ -f ~/.gitflow_export ]; then
 fi
 
 usage() {
-	echo "usage: git flow <subcommand>"
+	echo "usage: git monke <subcommand>"
 	echo
 	echo "Available subcommands are:"
 	echo "   init      Initialize a new git repo with support for the branching model."
 	echo "   feature   Manage your feature branches."
-	echo "   bugfix    Manage your bugfix branches."
 	echo "   release   Manage your release branches."
 	echo "   hotfix    Manage your hotfix branches."
-	echo "   support   Manage your support branches."
 	echo "   version   Shows version information."
-	echo "   config    Manage your git-flow configuration."
+	echo "   config    Manage your git-monke configuration."
 	echo "   log       Show log deviating from base branch."
 	echo
-	echo "Try 'git flow <subcommand> help' for details."
+	echo "Try 'git monke <subcommand> help' for details."
 }
 
 main() {
@@ -112,11 +110,11 @@ main() {
 	fi
 
 	# Use the shFlags project to parse the command line arguments
-	. "$GITFLOW_DIR/gitflow-shFlags"
-	FLAGS_PARENT="git flow"
+	. "$GITFLOW_DIR/gitmonke-shFlags"
+	FLAGS_PARENT="git monke"
 
 	# Load common functionality
-	. "$GITFLOW_DIR/gitflow-common"
+	. "$GITFLOW_DIR/gitmonke-common"
 
 	# allow user to request git action logging
 	DEFINE_boolean 'showcommands' false 'Show actions taken (git commands)'
@@ -159,14 +157,14 @@ main() {
 		fi
 	fi
 
-		if [ ! -e "$GITFLOW_DIR/git-flow-$SUBCOMMAND" ]; then
+		if [ ! -e "$GITFLOW_DIR/git-monke-$SUBCOMMAND" ]; then
 		usage
 		exit 1
 	fi
 
 	# Run command
-	. "$GITFLOW_DIR/git-flow-$SUBCOMMAND"
-	FLAGS_PARENT="git flow $SUBCOMMAND"
+	. "$GITFLOW_DIR/git-monke-$SUBCOMMAND"
+	FLAGS_PARENT="git monke $SUBCOMMAND"
 
 	if [ -z "${SUBACTION}" ]; then
 		# If the first argument is a flag, it starts with '-', we interpret this
@@ -201,7 +199,7 @@ main() {
 		initialize
 	fi
 	if [ $SUBACTION != 'default' ]; then
-		FLAGS_PARENT="git flow $SUBCOMMAND $SUBACTION"
+		FLAGS_PARENT="git monke $SUBCOMMAND $SUBACTION"
 	fi
 
 	cmd_$SUBACTION "$@" "${_short_branch_name}"
